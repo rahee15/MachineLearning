@@ -3,6 +3,7 @@ import os
 import pandas as pd
 import tarfile
 from six.moves import urllib
+from sklearn.model_selection import train_test_split
 
 
 
@@ -29,15 +30,27 @@ def load_housing_data(housing_path=HOUSING_PATH):
 	return pd.read_csv(csv_path)
 
 def main():
-	fetch_housing_data()
+	#fetch_housing_data()
 	housing=load_housing_data()
+	'''
 	print("Head data is \n {}".format(housing.head()))
 	print("info data is \n {}".format(housing.info()))
 	print("\n {} \n".format(housing["ocean_proximity"].value_counts()))
 	print("Describe Method \n {} \n".format(housing.describe()))
 	housing.hist(bins=50,figsize=(20,15))
 	plt.show()
-	#train_set,test_set = train_test_split(housing,random_state=42)
+	'''
+	train_set,test_set = train_test_split(housing,test_size=0.2,random_state=42)
+	
+	#train_set_copy = train_set.copy()
+	#housing.plot(kind="scatter",x="longitude",y="latitude",alpha="0.4",s=housing["population"]/100,label="population",figsize=(10,7),c="median_house_value",cmap=plt.get_cmap("jet"),colorbar=True)
+	#plt.show()
+
+	cor_matrix = housing.corr()
+	print(cor_matrix["median_house_value"].sort_values(ascending=False))
+
+
+
 
 if __name__ == '__main__':
         	main()        
