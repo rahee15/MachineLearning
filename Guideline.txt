@@ -1,0 +1,16 @@
+1.Estimation:
+	Estimation is always done with fit method.It generally takes one argument as dataset in supervised learning case it will take two arguments 1.dataset and 2.labels(other parameters are hyperparameter)
+2.Transformers:
+	transform().parameters 1.dataset
+	fit_transform() is equivalent to calling fit() and then transform()
+3.predictors
+	prdict()-predicts the value
+	score()-gives how accurate the results are
+
+estimators hyperparameters are accesible by imputer.strategy(public instance variables)
+estimators learned parameters are accesible with an underscoe suffix imputer.statistics_		
+
+One-hot encoding:
+	We will create bits for every labels and give them 1 if it occurs
+	suppose abcdefg amd label is c
+	then 	0010000 will be its one hot encoder output.
